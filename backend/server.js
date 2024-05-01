@@ -7,7 +7,10 @@ import connectMongoDB from "./db/connectMongoDB.js";
 const test = dotenv.config();
 
 const app = express();
-const PORT = process.env.PORT
+const PORT = process.env.PORT || 5000;
+
+app.use(express.json()); // to parse req.body
+app.use(express.urlencoded({ extended: true })); // to parse form data
 
 app.use("/api/auth", authRoutes);
 
